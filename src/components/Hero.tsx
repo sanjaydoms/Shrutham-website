@@ -30,7 +30,7 @@ export default function Hero({ onOpenBookingTab }: HeroProps) {
         className="absolute inset-0 transition-transform duration-[8000ms] ease-out"
         style={{
           transform: isLoaded ? 'scale(1)' : 'scale(1.08)',
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.15) 100%), url('/src/assets/images/shrutham_exterior_1782196718598.jpg')`,
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.15) 100%), url('src/assets/images/shrutham_exterior_1782196718598.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
