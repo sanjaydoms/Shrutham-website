@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", "Inter", serif;
+  --font-body: "Inter", sans-serif;
+  
+  --color-obsidian: #0A0908;
+  --color-gold: #5c0202;
+  --color-gold-light: #7a0303;
+  --color-gold-pale: #FCFAF5;
+  --color-chalk: #FAF9F6;
+  --color-rose: #BF9B8B;
+  --color-slate-custom: #2D2A26;
+  --color-mid: #2C2824; /* Upgraded to a highly readable rich charcoal */
+}
+
+/* Custom styles and animations to support the user's beautiful designs exactly */
+:root {
+  --obsidian: #0A0908;
+  --gold: #5c0202;
+  --gold-light: #7a0303;
+  --gold-pale: #FCFAF5;
+  --chalk: #FAF9F6;
+  --rose: #BF9B8B;
+  --slate: #2D2A26;
+  --mid: #2C2824; /* Upgraded to a highly readable rich charcoal */
+  --white: #FFFFFF;
+  --border: rgba(92,2,2,0.18);
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 7rem;
+  --space-2xl: 12rem;
+  --radius: 2px;
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Maximize text legibility while preserving the high-end premium aesthetic */
+body, .font-body {
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure font weight is appropriate and not overly forced unless necessary for thin fonts */
+.font-light {
+  font-weight: 300 !important;
+}
+
+/* Dynamic premium contrast: map gold to highly legible deep crimson on light or dark grounds */
+.text-gold {
+  color: #5c0202 !important;
+}
+
+/* Preserve deep crimson styling internally within lists or interactive cards */
+.bg-obsidian .text-gold,
+.bg-slate-custom .text-gold,
+.bg-black .text-gold,
+[class*="bg-obsidian"] .text-gold,
+[class*="bg-slate-custom"] .text-gold,
+[class*="bg-[rgba("] .text-gold,
+.text-gold-shimmer,
+.fill-gold,
+.bg-gold,
+.hover\:bg-gold:hover,
+.hover\:text-gold:hover,
+button .text-gold,
+a:hover .text-gold,
+.group:hover .group-hover\:text-gold {
+  color: #5c0202 !important;
+}
+
+/* Ensure secondary light gold maps to light crimson */
+.text-gold-light {
+  color: #7a0303 !important;
+}
+.bg-obsidian .text-gold-light,
+.bg-slate-custom .text-gold-light,
+.bg-black .text-gold-light,
+[class*="bg-obsidian"] .text-gold-light,
+[class*="bg-slate-custom"] .text-gold-light {
+  color: #7a0303 !important;
+}
+
+/* Boost low white opacities on dark themes to avoid hard-to-read faint texts while keeping hierarchy */
+.text-white\/40, .text-white\/45 {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+.text-white\/50, .text-white\/55 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+.text-white\/60, .text-white\/65, .text-white\/70 {
+  color: rgba(255, 255, 255, 0.84) !important;
+}
+.text-white\/75, .text-white\/80, .text-white\/85, .text-white\/90, .text-white\/95 {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.text-gold-pale\/75, .text-gold-pale\/80, .text-gold-pale\/90 {
+  color: #FCFAF5 !important;
+}
+
+.text-obsidian\/60, .text-obsidian\/70, .text-obsidian\/80, .text-obsidian\/85, .text-obsidian\/90 {
+  color: #0A0908 !important;
+}
+
+.text-mid\/80, .text-mid\/90 {
+  color: #2C2824 !important;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes strip-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-ticker-scroll {
+  animation: ticker-scroll 35s linear infinite;
+}
+
+.animate-strip-scroll {
+  animation: strip-scroll 60s linear infinite;
+}
+
+/* Support Cormorant Garamond and DM Sans custom utilities matching CSS template */
+.t-display {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+.t-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.t-body { font-size: 1rem; line-height: 1.8; color: var(--mid); }
+.t-lead { font-size: 1.2rem; line-height: 1.7; font-weight: 300; color: var(--mid); }
+
+/* Make sure buttons transition beautifully and remain highly accessible */
+.btn-transition {
+  transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Guarantee excellent keyboard navigation & focus-visible outlines on buttons for usability */
+button:focus-visible,
+a:focus-visible,
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #5c0202 !important;
+  outline-offset: 2px !important;
+}
+
+/* Ensure buttons using bg-gold/bg-crimson are consistently legible (white text on dark red background) */
+.bg-gold,
+[class*="bg-gold"] {
+  color: #FFFFFF !important; /* Forces solid high contrast white text on red elements */
+}
+
+/* Button text color security for states of maximum hover interaction */
+.bg-gold:hover,
+[class*="bg-gold"]:hover {
+  color: #FFFFFF !important;
+}
+
+/* Luxury design grid layout background - adds faint royal architectural guidelines */
+.luxe-grid-bg {
+  background-image: 
+    linear-gradient(rgba(92,2,2,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92,2,2,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Smooth elegant card entrance */
+@keyframes fade-up-luxe {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up-luxe {
+  animation: fade-up-luxe 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Sophisticated text gradient shimmer on hover */
+.text-gold-shimmer {
+  background: linear-gradient(135deg, #5c0202 0%, #8d0202 50%, #7a0303 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-shine 4s ease infinite;
+}
+
+@keyframes gold-shine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Modern High-End Left-to-Right Button Hover Animations */
+.btn-slide-crimson {
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  background-color: #5c0202;
+  color: #FFFFFF !important;
+}
+.btn-slide-crimson::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #7a0303;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+.btn-slide-crimson:hover {
+  transform: translateY(-1px);
+  color: #FFFFFF !important;
+}
+.btn-slide-crimson:hover::before {
+  transform: scaleX(1);
+}
+
+.btn-slide-outline {
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease, border-color 0.35s ease;
+  border: 1px solid #5c0202;
+  color: #5c0202 !important;
+  background-color: transparent;
+}
+.btn-slide-outline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #5c0202;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+.btn-slide-outline:hover {
+  transform: translateY(-1px);
+  color: #FFFFFF !important;
+}
+.btn-slide-outline:hover::before {
+  transform: scaleX(1);
+}
+
+.site-container {
+  width: min(92%, 1700px) !important;
+  max-width: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+

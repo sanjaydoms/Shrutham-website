@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Shrutham Convention",
+  "description": "Shrutham Convention Centre — Hyderabad\u0027s premier event venue near Nehru ORR Exit 15, Pedda Golconda. Built for weddings, corporate conferences, and prestigious events.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
