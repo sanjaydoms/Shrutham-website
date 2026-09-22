@@ -38,4 +38,5 @@ export interface Review {
   stars: number;
   text: string;
   eventType: string;
+  avatar?: string;
 }

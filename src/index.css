@@ -12,6 +12,12 @@
   --color-rose: #BF9B8B;
   --color-slate-custom: #2D2A26;
   --color-mid: #2C2824; /* Upgraded to a highly readable rich charcoal */
+
+  /* Homepage redesign palette */
+  --color-crimson: #5c0202;
+  --color-forest: #1F3A2D;
+  --color-cream: #F3EDE2;
+  --font-script: "Great Vibes", cursive;
 }
 
 /* Custom styles and animations to support the user's beautiful designs exactly */
@@ -274,6 +280,13 @@ textarea:focus-visible {
 .btn-slide-outline:hover::before {
   transform: scaleX(1);
 }
+
+/* UX: justified body copy creates uneven word gaps on the web — left-align it everywhere
+   (the Figma-specified About page opts back in with [text-align:justify]) */
+.text-justify { text-align: left !important; }
+
+/* UX: 12px running text is below comfortable reading size; nudge the utility up (labels absorb it fine) */
+.text-xs { font-size: 0.8125rem; }
 
 .site-container {
   width: min(92%, 1700px) !important;

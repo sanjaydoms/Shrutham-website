@@ -1,32 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import { 
-  Users, 
-  MapPin, 
-  Compass, 
-  Eye, 
-  Target, 
-  Sparkles, 
-  Check, 
-  MessageSquare, 
-  Clock, 
-  ArrowRight,
-  ShieldCheck,
-  Briefcase,
-  Heart
-} from 'lucide-react';
-import TestimonialsSection from './TestimonialsSection';
-import PageHeroLayout from './PageHeroLayout';
+import { useEffect, useState } from 'react';
+import { Star } from 'lucide-react';
+import Logo from './Logo';
+import AboutLocation from './AboutLocation';
+import heroImg from '../assets/images/shrutham_exterior_1782196718598.jpg';
+
+/*
+ * About Us — built to the Figma frame (1440 wide, 60px side margins, 1316 content).
+ * Desktop values are the Figma measurements; smaller breakpoints stack.
+ */
 
 interface AboutUsPageProps {
   onInquire: () => void;
 }
 
+const C = 'mx-auto w-[min(100%-3rem,1316px)]'; // Figma content width
+
+const u = (id: string, w = 1200) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80`;
+
+const TEAM = [
+  { name: 'Rohit Nair', role: 'Head – Event Coordination', image: u('1560250097-0b93528c311a', 900), desc: 'With years of experience in event management, Rohit ensures every event is executed with precision and care — from the first walkthrough to the final farewell.' },
+  { name: 'Priya Menon', role: 'Event Manager', image: u('1573496359142-b8d87734a5a2', 900), desc: 'Priya works closely with clients to understand their needs and create memorable event experiences.' },
+  { name: 'Vikram Rao', role: 'Client Relations Executive', image: u('1507003211169-0a1dd7228f2d', 900), desc: 'Vikram ensures a smooth and hassle-free experience, from initial planning to the final celebration.' },
+];
+
+const REVIEWS = [
+  { name: 'Abhinav', image: u('1506794778202-cad84cf45f1d', 900), text: 'Shrutham Convention exceeded all our expectations! The venue was beautiful, the team was very professional and supportive, and everything was managed flawlessly. It made our special day truly memorable.' },
+  { name: 'Meera R.', image: u('1494790108377-be9c29b29330', 900), text: "The corporate conference we hosted at Shrutham was flawless. The venue's state-of-the-art AV equipment and professional event management team made all the difference." },
+  { name: 'Rajesh G.', image: u('1472099645785-5658abf4ff4e', 900), text: 'We hosted a grand exhibition for up to 3,000 guests, and the layout handled the crowd effortlessly. Ample parking space and easy access from ORR Exit 15 are huge pluses.' },
+  { name: 'Sanjay & Ananya', image: u('1511795409834-ef04bbd61622', 900), text: 'Shrutham Convention exceeded all our expectations for our wedding. The pillar-free hall made the decor look absolutely majestic, and our guests had no trouble arriving from Gachibowli.' },
+];
+
 export default function AboutUsPage({ onInquire }: AboutUsPageProps) {
-  // Page-Level SEO handling
+  const [review, setReview] = useState(0);
+
   useEffect(() => {
     document.title = "About Us | Shrutham Convention – Hyderabad's Top Venue";
-    
-    // Set meta description
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
       metaDesc = document.createElement('meta');
@@ -36,397 +44,183 @@ export default function AboutUsPage({ onInquire }: AboutUsPageProps) {
     metaDesc.setAttribute('content', "Discover the story behind Shrutham Convention, Hyderabad's trusted event venue near ORR Exit 15. Meet our team and our vision for elegant celebrations.");
   }, []);
 
-  const uSpBlocks = [
-    {
-      id: 'prime-location',
-      title: 'Prime Location & Accessibility',
-      desc: 'Situated minutes from Nehru ORR Exit 15, allowing guests from Gachibowli, Secunderabad, and Jubilee Hills to arrive via continuous high-speed transit while avoiding congested residential roadways. Supported by structured parking for over 2,000 cars and elite valet teams.',
-      icon: <MapPin className="w-5 h-5 text-current" />
-    },
-    {
-      id: 'versatile-spaces',
-      title: 'Versatile, Multi-Scale Layouts',
-      desc: 'From majestic weddings for thousands to focused executive boardroom assemblies — our pillar-free halls adapt dynamically. Engineered with NRC 0.85 soundproof panels and flexible configurations to guarantee perfect sightlines and crystal-clear acoustics.',
-      icon: <Sparkles className="w-5 h-5 text-current" />
-    },
-    {
-      id: 'event-team',
-      title: 'Dedicated, Single-Point Coordination',
-      desc: 'Every booking is paired with a professional event relations specialist. We handle digital 3D space layouts, custom decor coordination, security protocol management, and strict minute-by-minute itinerary tracking, giving you absolute peace of mind.',
-      icon: <Users className="w-5 h-5 text-current" />
-    },
-    {
-      id: 'premium-hospitality',
-      title: 'Elite Amenities & Premium Facilities',
-      desc: 'Featuring 5-star standard overnight suites for hosts, specialized bridal green-rooms, separate veg/non-veg master kitchens, and around-the-clock butler support, delivering an unmatched premium experience for you and your guests.',
-      icon: <ShieldCheck className="w-5 h-5 text-current" />
-    }
-  ];
-
-  const teamRoles = [
-    {
-      name: 'Anil Kumar',
-      role: 'Founder & Managing Director',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
-      bio: 'With over two decades of leadership in premium real estate development and high-society hospitality in Telangana, Anil founded Shrutham Convention to redefine the twin cities\' landmark hosting spaces. His vision combines architectural scale with flawless, concierge-driven coordination.'
-    },
-    {
-      name: 'Radhika Sastry',
-      role: 'Director of Event Relations & Success',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80',
-      bio: 'Radhika manages direct client coordination and local designer partnerships. Her team translates your layout ideas into custom 3D floor plans and coordinates seamless backstage operations.'
-    },
-    {
-      name: 'Chef K. Ranganadhan',
-      role: 'Executive banquet captain & culinary lead',
-      image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&auto=format&fit=crop&q=80',
-      bio: 'Chef Ranganadhan oversees our FSSAI-certified separate prep kitchens, curating customizable silver-service regional delicacies and royal multi-cuisine menus for up to 10,000 guests daily.'
-    }
-  ];
-
-  const metrics = [
-    { value: '6+', label: 'Event Spaces' },
-    { value: '1,000+', label: 'Guest Capacity' },
-    { value: '100%', label: 'Personalised Service' },
-    { value: '24/7', label: 'Support & Coordination' }
-  ];
+  const r = REVIEWS[review];
 
   return (
-    <div className="bg-[#FCFAF5] font-body text-slate-custom">
-         {/* SECTION 1 — THE SHRUTHAM STANDARD (Swiss-style typographic Hero) */}
-      <PageHeroLayout
-        title="ABOUT US"
-        navItems={[
-          { label: 'about us.', targetId: 'shrutham-edge', active: true },
-          { label: 'our values.', targetId: 'our-values' },
-          { label: 'our team.', targetId: 'our-team' }
-        ]}
-        paragraphs={[
-          <>
-            Shrutham Convention, the premier gold-standard hospitality destination in <strong className="text-[#5c0202] font-semibold">Hyderabad</strong>, was established in <strong className="text-[#5c0202] font-semibold">2023</strong> by real estate visionary <strong className="text-[#5c0202] font-semibold">Anil Kumar</strong> following his extensive experience in crafting premium commercial infrastructures. Strategically located directly off the <strong className="text-[#5c0202] font-semibold">Nehru Outer Ring Road (ORR) Exit 15</strong>, Shrutham offers seamless access, premium hospitality, and absolute grand-scale hosting solutions for royal weddings, corporate congresses, and global summits.
-          </>,
-          <>
-            Engineered entirely on the architectural tenets of pure pillarless geometry, Shrutham spans over <strong className="text-[#5c0202] font-semibold">32,000 square meters</strong> of versatile indoor and outdoor arenas. With integrated <strong className="text-[#5c0202] font-semibold">NRC 0.85</strong> sound isolation panels, high load-bearing roof rigging up to <strong className="text-[#5c0202] font-semibold">15 tonnes</strong>, and state-of-the-art separate veg/non-veg master kitchens, we elevate traditional Indian warmth into flawless, zero-error execution.
-          </>
-        ]}
-      />
+    <div className="bg-[#FCFAF5] text-slate-custom font-body">
 
+      {/* ================= HERO (Figma: 661.5 tall, soft blurred cream band + brand mark) ================= */}
+      <section className="relative h-[420px] md:h-[540px] lg:h-[661px] overflow-hidden" aria-label="Shrutham Convention">
+        <img src={heroImg} alt="Shrutham Convention exterior" className="absolute inset-0 w-full h-full object-cover object-center" />
+        {/* Vector 2: 1884×305, blur 35px, rotate -2.17°, starts 361px into the hero */}
+        <div className="absolute left-[-23%] w-[131%] h-[220px] lg:h-[305px] bottom-[-110px] lg:bottom-[-5px] bg-[#FCFAF5] blur-[24px] lg:blur-[35px] -rotate-[2.17deg]" aria-hidden="true" />
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#FCFAF5] to-transparent" aria-hidden="true" />
+        {/* Brand mark sitting on the transition */}
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-6 md:bottom-8 lg:bottom-4 scale-[1.15] md:scale-[1.6] lg:scale-[2.1] origin-bottom">
+          <Logo variant="dark" size="lg" />
+        </div>
+      </section>
 
-      {/* PANORAMIC VISUAL BANNER — PLACED ABOVE THE SHRUTHAM EDGE */}
-      <section className="w-full bg-[#FCFAF5] border-b border-[#5c0202]/10 py-6">
-        <div className="site-container px-6 md:px-12 lg:px-16 xl:px-24">
-          <div className="relative aspect-[21/8] min-h-[250px] w-full rounded-[4px] overflow-hidden border border-[#5c0202]/15 shadow-xl bg-chalk group">
-            <img 
-              src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1800&q=80" 
-              alt="Panoramic view of Shrutham Grand Convention Hall Setup" 
-              className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-1000 ease-out"
-              referrerPolicy="no-referrer"
+      {/* ================= INTRODUCTION (Figma: image 522 @x62, gold strip; text @x633, 750 wide) ================= */}
+      <section className="pt-7 pb-20 lg:pb-[88px]" aria-labelledby="about-intro-heading">
+        <div className={`${C} grid grid-cols-1 lg:grid-cols-[522px_1fr] gap-10 lg:gap-[49px] items-start`}>
+          <div className="relative pt-[58px] max-w-[522px]">
+            <div className="absolute top-0 left-0 w-full h-[161px] bg-[#D68B30]" aria-hidden="true" />
+            <img
+              src={u('1511795409834-ef04bbd61622')}
+              alt="Shrutham Convention grand foyer"
+              className="relative w-[calc(100%-1px)] aspect-[521/555] object-cover bg-white shadow-[0_0_11px_rgba(0,0,0,0.25)]"
             />
-            {/* Ambient vignette and darkening shadow gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
           </div>
-        </div>
-      </section>
-
-      {/* 1. THE SHRUTHAM EDGE (Why Choose Us) */}
-      <section id="shrutham-edge" className="py-20 md:py-28 bg-[#FCFAF5] border-b border-[#5c0202]/10 scroll-mt-24">
-        <div className="site-container px-6 md:px-12 lg:px-16 xl:px-24">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs uppercase text-[#5c0202] font-bold tracking-[0.2em] block mb-2 font-mono">
-              The Shrutham Edge
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-light text-obsidian tracking-tight mb-4">
-              Why Shrutham Convention Is Hyderabad's Most Trusted Event Venue
-            </h2>
-            <div className="h-[1px] bg-[#5c0202]/20 w-24 mx-auto" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {uSpBlocks.map((usp) => (
-              <div 
-                key={usp.id} 
-                className="bg-white p-8 border border-[#5c0202]/10 rounded-[4px] shadow-sm hover:shadow-md transition-all group duration-300"
-              >
-                <div className="flex gap-4 items-start">
-                  <div className="p-3.5 bg-[#5c0202]/5 rounded-[4px] shrink-0 text-[#5c0202] group-hover:bg-[#5c0202] group-hover:text-white transition-all duration-300">
-                    {usp.icon}
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="font-display text-lg font-medium text-obsidian group-hover:text-[#5c0202] transition-colors">
-                      {usp.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-[#2C2824] leading-relaxed font-light text-justify">
-                      {usp.desc}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 2. WHO WE ARE */}
-      <section id="who-we-are" className="py-20 md:py-28 bg-white border-b border-[#5c0202]/10 scroll-mt-24">
-        <div className="site-container px-6 md:px-12 lg:px-16 xl:px-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
-            {/* Visual Column */}
-            <div className="lg:col-span-5 relative order-2 lg:order-1">
-              <div className="relative z-10 rounded-[4px] overflow-hidden border border-[#5c0202]/15 shadow-xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&auto=format&fit=crop&q=80" 
-                  alt="Elegant table arrangements and royal chandeliers at Shrutham Ballroom"
-                  className="w-full aspect-[4/3] object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-36 h-36 bg-[#5c0202]/5 rounded-full blur-2xl -z-10" />
+          <div className="lg:pt-3 lg:pr-[10px]">
+            <p className="m-0 text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase text-[#5c0202]">About Shrutham Convention</p>
+            <h1 id="about-intro-heading" className="mt-4 mb-6 font-display text-4xl sm:text-5xl font-light text-obsidian tracking-tight leading-tight">Who We Are</h1>
+            <div className="space-y-5 text-sm sm:text-base text-[#2C2824] font-light leading-relaxed">
+              <p>
+                Shrutham Convention is a thoughtfully designed destination for weddings, corporate events, social gatherings and more. Blending elegant architecture with modern amenities, we create the perfect setting for unforgettable experiences.
+              </p>
+              <p>
+                Strategically located near Nehru Outer Ring Road (ORR) Exit 15, Pedda Golconda, we offer unmatched accessibility for guests travelling from across Hyderabad and beyond. Whether you are planning a grand wedding reception, a corporate conference, a milestone birthday or a cultural ceremony, our versatile spaces and expert hospitality team transform your vision into a breathtaking reality.
+              </p>
+              <p>
+                With spacious event halls, beautiful surroundings and a dedicated team, we ensure every detail is taken care of — so you can focus on what truly matters: your special moments.
+              </p>
             </div>
-
-            {/* Story Details Column */}
-            <div className="lg:col-span-7 space-y-6 order-1 lg:order-2">
-              <span className="text-xs uppercase text-[#5c0202] font-semibold tracking-widest block font-mono">
-                Established With Purpose
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-light text-obsidian tracking-tight leading-tight">
-                Who We Are
-              </h2>
-              <div className="w-12 h-0.5 bg-[#5c0202]" />
-
-              <div className="space-y-4 text-xs sm:text-sm text-[#2C2824] font-light leading-relaxed text-justify">
-                <p>
-                  Shrutham Convention is Hyderabad's premier destination for celebrations, corporate gatherings, and social events. Located strategically near Nehru Outer Ring Road Exit 15, Pedda Golconda — opposite Shree Mantra Convention, in the vibrant Sanghiguda neighbourhood — we are easily accessible from across the twin cities of Hyderabad and Secunderabad.
-                </p>
-                <p>
-                  Founded with a singular vision — to create a venue where elegance meets efficiency — Shrutham Convention has grown into one of Hyderabad's most sought-after event spaces. Our team, led by Anil Kumar, brings passion, precision, and a personal touch to every event we host.
-                </p>
-                <p>
-                  We are not just a venue. We are your event partners — committed to understanding your vision, respecting your budget, and delivering results that exceed your expectations.
-                </p>
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
 
-      {/* 3. OUR VISION & MISSION */}
-      <section id="our-values" className="py-20 md:py-28 bg-[#FCFAF5] border-b border-[#5c0202]/10 scroll-mt-24">
-        <div className="site-container px-6 md:px-12 lg:px-16 xl:px-24">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs uppercase text-[#5c0202] font-bold tracking-[0.2em] block mb-2 font-mono">
-              Guiding Principles
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-light text-obsidian tracking-tight mb-4">
-              Our Vision &amp; Mission
-            </h2>
-            <div className="h-[1px] bg-[#5c0202]/20 w-24 mx-auto" />
+      {/* ================= VISION & MISSION ================= */}
+      <section className="pb-20 lg:pb-[215px]" aria-labelledby="vm-heading">
+        <h2 id="vm-heading" className="m-0 text-center font-display text-4xl sm:text-5xl font-light text-obsidian tracking-tight leading-tight">Vision &amp; Mission</h2>
+
+        {/* Vision: image group @x56 (651×435, gold block right), text @x761 */}
+        <div className={`${C} mt-12 lg:mt-[59px] grid grid-cols-1 lg:grid-cols-[651px_1fr] gap-10 lg:gap-[54px] items-start`}>
+          <div className="relative h-[300px] sm:h-[380px] lg:h-[435px] lg:-ml-1">
+            <div className="absolute top-0 right-0 lg:left-[511px] lg:right-auto w-[141px] h-full bg-[#D68B30]" aria-hidden="true" />
+            <img src={u('1519225421980-715cb0215aed')} alt="Elegant reception setting at Shrutham" className="absolute left-0 top-[40px] lg:top-[63px] w-[calc(100%-54px)] lg:w-[598px] h-[calc(100%-40px)] lg:h-[372px] object-cover" />
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            
-            {/* Vision */}
-            <div className="bg-white p-8 md:p-10 border border-[#5c0202]/10 rounded-[6px] shadow-xs flex gap-5 items-start">
-              <div className="p-3 bg-[#5c0202]/5 rounded-[4px] shrink-0 text-[#5c0202]">
-                <Eye size={24} />
-              </div>
-              <div className="space-y-3">
-                <h3 className="font-display text-xl font-medium text-obsidian">Our Vision</h3>
-                <p className="text-xs sm:text-sm text-[#2C2824] leading-relaxed font-light text-justify">
-                  To be Hyderabad's most celebrated convention and banquet destination — a place where every occasion is elevated into an extraordinary experience.
-                </p>
-              </div>
-            </div>
-
-            {/* Mission */}
-            <div className="bg-white p-8 md:p-10 border border-[#5c0202]/10 rounded-[6px] shadow-xs flex gap-5 items-start">
-              <div className="p-3 bg-[#5c0202]/5 rounded-[4px] shrink-0 text-[#5c0202]">
-                <Target size={24} />
-              </div>
-              <div className="space-y-3">
-                <h3 className="font-display text-xl font-medium text-obsidian">Our Mission</h3>
-                <p className="text-xs sm:text-sm text-[#2C2824] leading-relaxed font-light text-justify">
-                  To provide world-class event facilities, personalised service, and seamless coordination that makes every client feel valued, every guest feel welcomed, and every event feel magical.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 4. KEY METRICS */}
-      <section className="py-20 md:py-24 bg-white border-b border-[#5c0202]/10">
-        <div className="site-container px-6 md:px-12 lg:px-16 xl:px-24">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs uppercase text-[#5c0202] font-bold tracking-[0.2em] block mb-2 font-mono">
-              Key Metrics
-            </span>
-            <h2 className="font-display text-2xl sm:text-3xl font-light text-obsidian tracking-tight mb-4">
-              Shrutham Convention at a Glance
-            </h2>
-            <div className="h-[1px] bg-[#5c0202]/20 w-16 mx-auto" />
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {metrics.map((m, idx) => (
-              <div 
-                key={idx} 
-                className="bg-[#FCFAF5] p-6 md:p-8 border border-[#5c0202]/10 rounded-[4px] text-center shadow-xs"
-              >
-                <span className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-[#5c0202] block mb-2 font-semibold">
-                  {m.value}
-                </span>
-                <span className="text-[10px] sm:text-xs uppercase text-obsidian/75 tracking-wider font-semibold block">
-                  {m.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. OUR HOSPITALITY LEADERS */}
-      <section id="our-team" className="py-20 md:py-28 bg-[#FCFAF5] border-[#5c0202]/10 border-b scroll-mt-24">
-        <div className="site-container px-6 md:px-12 lg:px-16 xl:px-24">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs uppercase text-[#5c0202] font-bold tracking-[0.2em] block mb-2 font-mono">
-              Our Hospitality Leaders
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-light text-obsidian tracking-tight mb-4">
-              Our Event Coordination Team
-            </h2>
-            <div className="h-[1px] bg-[#5c0202]/20 w-24 mx-auto mb-4" />
-            <p className="text-xs sm:text-sm font-light text-mid max-w-lg mx-auto">
-              Our dedicated professionals bring decades of industry expertise, assuring bespoke attention to your guests.
+          <div className="lg:pt-[152px] max-w-[605px]">
+            <h3 className="m-0 font-display text-3xl sm:text-4xl font-normal text-obsidian tracking-tight">Vision</h3>
+            <p className="mt-4 mb-0 text-sm sm:text-base text-[#2C2824] font-light leading-relaxed">
+              To be the most trusted and preferred convention and event destination, known for creating extraordinary experiences that bring people together.
             </p>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {teamRoles.map((member, idx) => (
-              <div 
-                key={idx} 
-                className="bg-white border border-[#5c0202]/10 rounded-[6px] shadow-xs overflow-hidden flex flex-col hover:shadow-md transition-shadow"
-              >
-                <div className="aspect-[4/3] relative overflow-hidden bg-chalk border-b border-[#5c0202]/5">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover object-top"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-3 left-3 bg-[#5c0202] text-white text-[9px] font-bold tracking-widest px-2.5 py-1 rounded-[2px] uppercase font-mono">
-                    {idx === 0 ? 'Founder' : 'Expert Coordinator'}
-                  </div>
-                </div>
-                <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="font-display text-lg font-medium text-obsidian">{member.name}</h3>
-                    <p className="text-[10px] uppercase tracking-wider text-gold font-semibold font-mono mb-3">{member.role}</p>
-                    <p className="text-xs text-[#2C2824] leading-relaxed font-light text-justify">
-                      {member.bio}
-                    </p>
-                  </div>
-                </div>
+        {/* Mission: text @x102, image group @x707 (dark-red block left, gold-bordered image) — overlaps Vision by 34px */}
+        <div className={`${C} mt-12 lg:-mt-[34px] grid grid-cols-1 lg:grid-cols-[1fr_651px] gap-10 lg:gap-[54px] items-start`}>
+          <div className="order-2 lg:order-1 lg:pl-[42px] lg:pt-[177px] max-w-[605px]">
+            <h3 className="m-0 font-display text-3xl sm:text-4xl font-normal text-obsidian tracking-tight">Mission</h3>
+            <p className="mt-4 mb-0 text-sm sm:text-base text-[#2C2824] font-light leading-relaxed">
+              To provide world-class infrastructure, exceptional service and memorable experiences for every event, while continuously raising the benchmark in hospitality and event management.
+            </p>
+          </div>
+          <div className="order-1 lg:order-2 relative h-[300px] sm:h-[380px] lg:h-[436px] lg:mr-5">
+            <div className="absolute top-0 left-0 w-[140px] h-full bg-[#640A0A]" aria-hidden="true" />
+            <img src={u('1464366400600-7168b8af9bc3')} alt="Banquet arrangement at Shrutham" className="absolute right-0 top-[40px] lg:top-[63px] w-[calc(100%-54px)] lg:w-[598px] h-[calc(100%-40px)] lg:h-[373px] object-cover border-[0.9px] border-[#D68B30]" />
+          </div>
+        </div>
+      </section>
+
+      {/* ================= OUR STORY + full-width visual (Figma: label, 702 heading, 1440×752 band) ================= */}
+      <section aria-labelledby="story-heading">
+        <p className="m-0 text-center text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase text-[#5c0202]">Our Story</p>
+        <h2 id="story-heading" className={`${C} mt-4 mb-10 lg:mb-[107px] text-center font-display text-4xl sm:text-5xl font-light text-obsidian tracking-tight leading-tight max-w-[702px]`}>
+          A Space for Every Special Story
+        </h2>
+        <img src={u('1519167758481-83f550bb49b3', 1800)} alt="Decorated banquet hall at Shrutham Convention" className="w-full h-[320px] md:h-[520px] lg:h-[752px] object-cover" />
+      </section>
+
+      {/* ================= TEAM (Figma: heading 585, desc 661, 3 × 420×451 r17) ================= */}
+      <section className="pt-20 lg:pt-[127px]" aria-labelledby="team-heading">
+        <div className={C}>
+          <h2 id="team-heading" className="m-0 text-center font-display text-4xl sm:text-5xl font-light text-obsidian tracking-tight leading-tight">The People Behind Your Event</h2>
+          <p className="mx-auto mt-4 mb-0 max-w-[661px] text-center text-sm sm:text-base text-[#2C2824] font-light leading-relaxed">
+            Our experienced event coordination team works closely with you to plan, organise and execute every detail seamlessly.
+          </p>
+          <ul className="list-none m-0 p-0 mt-12 lg:mt-[90px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-12">
+            {TEAM.map((m) => (
+              <li key={m.name}>
+                <img src={m.image} alt={`${m.name}, ${m.role}`} loading="lazy" className="w-full aspect-[420/451] object-cover rounded-[16.875px] bg-[#D9D9D9]" />
+                <h3 className="mt-6 mb-0 font-display text-2xl font-normal text-obsidian">{m.name}</h3>
+                <p className="mt-1 mb-0 text-[11px] font-bold tracking-[0.18em] uppercase text-[#5c0202]">{m.role}</p>
+                <p className="mt-3 mb-0 text-sm text-[#2C2824] font-light leading-relaxed">{m.desc}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ================= LOCATION (full-bleed map, brand mark at the venue, photo callouts) ================= */}
+      <div className="mt-20 lg:mt-[140px]">
+        <AboutLocation />
+      </div>
+
+      {/* ================= TESTIMONIAL (Figma: #FFD0D0 1316×511 r34, photo 421×464 r31, 40px author, stars, 28px italic) ================= */}
+      <section className="pt-20 lg:pt-[161px]" aria-labelledby="testimonial-heading">
+        <div className={C}>
+          <h2 id="testimonial-heading" className="m-0 text-center font-display text-4xl sm:text-5xl font-light text-obsidian tracking-tight leading-tight">What Our Happy Hosts Say</h2>
+          <p className="mx-auto mt-4 mb-0 max-w-[661px] text-center text-sm sm:text-base text-[#2C2824] font-light leading-relaxed">
+            Hear from the hosts who trusted Shrutham Convention with their most memorable celebrations.
+          </p>
+
+          <div className="mt-10 lg:mt-[57px] bg-[#FFD0D0] rounded-[24px] lg:rounded-[33.75px] p-5 lg:p-6 grid grid-cols-1 lg:grid-cols-[421px_1fr] gap-8 lg:gap-[54px] lg:min-h-[511px]" aria-live="polite">
+            <img key={r.image} src={r.image} alt={r.name} className="w-full max-w-[421px] mx-auto lg:mx-0 aspect-[421/464] object-cover rounded-[24px] lg:rounded-[30.64px] bg-[#D9D9D9] animate-fade-in" />
+            <div className="lg:pt-14 lg:pr-[28px]">
+              <p className="m-0 font-display text-3xl sm:text-4xl font-normal text-obsidian">{r.name}</p>
+              <div className="mt-3 flex items-center gap-[1px]" aria-label="5 out of 5 stars">
+                {Array.from({ length: 5 }).map((_, i) => <Star key={i} size={16} className="fill-[#5c0202] stroke-[#5c0202]" />)}
               </div>
+              <blockquote className="mt-5 mb-0 font-display text-xl sm:text-2xl font-normal italic text-obsidian leading-relaxed">
+                “{r.text}”
+              </blockquote>
+            </div>
+          </div>
+
+          {/* Pagination: 20.77px dots, active #5C0202 */}
+          <div className="mt-10 lg:mt-[68px] flex justify-center gap-[7.8px]">
+            {REVIEWS.map((rev, i) => (
+              <button
+                key={rev.name}
+                onClick={() => setReview(i)}
+                aria-label={`Show testimonial ${i + 1}`}
+                aria-current={i === review}
+                className={`w-[20.77px] h-[20.77px] rounded-full border-none cursor-pointer transition-colors ${i === review ? 'bg-[#5C0202]' : 'bg-[#D9D9D9] hover:bg-[#c9c9c9]'}`}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* 6. LOCATION AND CONNECTIVITY */}
-      <section className="py-20 md:py-28 bg-white border-b border-[#5c0202]/10">
-        <div className="site-container px-6 md:px-12 lg:px-16 xl:px-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs uppercase text-[#5c0202] font-semibold tracking-widest block font-mono">
-                Location &amp; Connectivity
-              </span>
-              <h3 className="font-display text-3xl sm:text-4xl font-light text-obsidian tracking-tight leading-tight">
-                Strategic Access
-              </h3>
-              <p className="text-sm text-[#2C2824] leading-relaxed font-light text-justify">
-                Located near Nehru Outer Ring Road Exit 15, Pedda Golconda, opposite Shree Mantra Convention in Sanghiguda. We provide seamless, congestion-free travel for guests arriving from across the twin cities of Hyderabad &amp; Secunderabad.
-              </p>
+      {/* ================= CTA (Figma: 1440×616 #5C0202, card 1155×451 r21, image 532 right) ================= */}
+      <section className="mt-20 lg:mt-[170px] bg-[#5C0202] py-14 lg:py-[82px] px-6" aria-labelledby="cta-heading">
+        <div className="mx-auto max-w-[1155px] bg-[#FCFAF5] rounded-[21.375px] overflow-hidden grid grid-cols-1 lg:grid-cols-[1fr_532px] lg:min-h-[451px]">
+          <div className="px-7 py-10 lg:pl-[57px] lg:pr-10 lg:pt-[82px] lg:pb-[44px]">
+            <h2 id="cta-heading" className="m-0 max-w-[583px] font-display text-3xl sm:text-4xl font-light text-obsidian tracking-tight leading-tight">
+              Let’s Create Something Extraordinary Together
+            </h2>
+            <p className="mt-4 mb-0 max-w-[543px] text-sm sm:text-base text-[#2C2824] font-light leading-relaxed">
+              Whether it’s a wedding, corporate event or a special gathering, we’re here to make it memorable. Our team will walk you through availability, spaces and packages.
+            </p>
+            <div className="mt-8 lg:mt-[32px] flex flex-col sm:flex-row gap-4 lg:gap-[24px]">
+              <button onClick={onInquire} className="btn-slide-crimson inline-flex items-center justify-center text-white font-body text-xs font-bold tracking-[0.16em] uppercase px-8 py-4 rounded-[2px] border-none cursor-pointer">
+                Book Your Event
+              </button>
+              <a href="#facilities" className="btn-slide-outline inline-flex items-center justify-center font-body text-xs font-bold tracking-[0.16em] uppercase px-8 py-4 rounded-[2px]">
+                Explore Our Spaces
+              </a>
             </div>
-
-            <div className="lg:col-span-6">
-              {/* Styled iframe Map embedding */}
-              <div className="w-full h-[360px] md:h-[420px] rounded-[6px] overflow-hidden border border-[#5c0202]/15 shadow-md">
-                <iframe 
-                  title="Shrutham Convention Location Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3811.4589090623347!2d78.4907409!3d17.201659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbc3542471f0ff%3A0xc3959955743b1716!2sShrutham%20Convention!5e0!3m2!1sen!2sin!4v1700000000000" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen={true}
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-            </div>
-
+          </div>
+          <div className="relative min-h-[240px] lg:min-h-0">
+            <img src={u('1519167758481-83f550bb49b3', 1200)} alt="Celebration set-up at Shrutham Convention" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
           </div>
         </div>
       </section>
 
-
-      {/* 7. TESTIMONIALS */}
-      <TestimonialsSection />
-
-      {/* SECTION 8 — LET'S COLLABORATE (CTA Band) */}
-      <section className="py-20 md:py-28 bg-[#8280f2] flex items-center justify-center px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-        <div className="w-full max-w-[1200px] bg-white rounded-[24px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            
-            {/* Left Content Side */}
-            <div className="p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col justify-center text-left space-y-6">
-              <span className="text-[#4f46e5] font-semibold text-xs sm:text-sm tracking-wide block font-sans">
-                Ready to Transform Your Next Event?
-              </span>
-              
-              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[#111111] tracking-tight leading-tight">
-                Take the Next Step Toward Your Grand Celebration
-              </h2>
-              
-              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed font-light">
-                Discover how Shrutham Convention's majestic spaces, elite culinary curations, and meticulous event coordination come together to turn your vision into an unforgettable masterpiece.
-              </p>
-              
-              <div className="pt-4 flex flex-wrap gap-4">
-                <button
-                  onClick={onInquire}
-                  className="bg-[#5c0202] hover:bg-[#7a0303] text-white text-xs sm:text-sm font-semibold px-6 py-3.5 rounded-[8px] transition-all cursor-pointer shadow-md hover:-translate-y-0.5 inline-flex items-center justify-center"
-                >
-                  Book Your Venue
-                </button>
-                <button
-                  onClick={onInquire}
-                  className="border border-gray-200 hover:border-gray-300 text-gray-700 hover:text-black text-xs sm:text-sm font-semibold px-6 py-3.5 rounded-[8px] transition-all cursor-pointer hover:bg-gray-50 inline-flex items-center justify-center"
-                >
-                  Schedule a Site Visit
-                </button>
-              </div>
-            </div>
-
-            {/* Right Image Side */}
-            <div className="relative min-h-[300px] lg:min-h-full overflow-hidden bg-gray-50">
-              <img
-                src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1200&auto=format&fit=crop&q=80"
-                alt="Shrutham Convention Luxury Banquet"
-                className="absolute inset-0 w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-              {/* Soft overlay gradient to match the elegant tone */}
-              <div className="absolute inset-0 bg-black/5 pointer-events-none" />
-            </div>
-
-          </div>
-        </div>
-      </section>
-
+      {/* Figma: 63px of page background before the footer */}
+      <div className="h-10 lg:h-[63px]" aria-hidden="true" />
     </div>
   );
 }

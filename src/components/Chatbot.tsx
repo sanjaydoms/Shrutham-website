@@ -86,7 +86,7 @@ export default function Chatbot({ isOpen, onClose, onToggle }: ChatbotProps) {
       {/* Floating Chat Button */}
       <button
         onClick={onToggle}
-        className="fixed bottom-24 md:bottom-8 right-6 z-40 w-14 h-14 rounded-full bg-[#5c0202] text-white flex items-center justify-center shadow-2xl hover:bg-[#7a0303] hover:scale-105 active:scale-95 transition-all cursor-pointer"
+        className="fixed bottom-8 right-6 z-40 w-14 h-14 rounded-full bg-[#5c0202] text-white hidden md:flex items-center justify-center shadow-2xl hover:bg-[#7a0303] hover:scale-105 active:scale-95 transition-all cursor-pointer"
         aria-label="Open Chat Assistant"
         title="Chat with Shruthi"
         id="chatbot-trigger"

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Calendar, Compass } from 'lucide-react';
+import heroImg from '../assets/images/shrutham_exterior_1782196718598.jpg';
 
 interface HeroProps {
   onOpenBookingTab: () => void;
@@ -30,14 +31,10 @@ export default function Hero({ onOpenBookingTab }: HeroProps) {
         className="absolute inset-0 transition-transform duration-[8000ms] ease-out"
         style={{
           transform: isLoaded ? 'scale(1)' : 'scale(1.08)',
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.15) 100%), url('src/assets/images/shrutham_exterior_1782196718598.jpg')`,
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.15) 100%), url(${heroImg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          marginRight: '0px',
-          marginBottom: '7px',
-          marginLeft: '0px',
-          marginTop: '40px',
         }}
         role="img"
         aria-label="Premium Grand Convention Hall Interior"
@@ -55,7 +52,7 @@ export default function Hero({ onOpenBookingTab }: HeroProps) {
       <div className="relative z-10 mx-6 md:mx-12 lg:mx-20 my-20 p-8 md:p-12 lg:p-14 max-w-[780px] w-full bg-white/45 backdrop-blur-xl border border-white/60 shadow-2xl rounded-[12px] shadow-[0_30px_60px_-15px_rgba(92,2,2,0.15)]">
         {/* Page-level SEO H1 (visually hidden to avoid duplicating headers) */}
         <h1 className="sr-only">Hyderabad's Premier Convention Centre — Elegant Spaces for Every Grand Occasion</h1>
-        
+
         <div className="flex items-center gap-4 mb-6">
           <span className="w-8 h-[2px] bg-[#5c0202] block"></span>
           <span className="text-[0.75rem] font-bold tracking-[0.25em] text-[#5c0202] uppercase font-body">
@@ -73,7 +70,7 @@ export default function Hero({ onOpenBookingTab }: HeroProps) {
           Elegant spaces. Impeccable service. Memories that last a lifetime.
         </h3>
 
-        <p className="font-body text-sm md:text-[1rem] text-obsidian font-medium leading-relaxed max-w-xl mb-10">
+        <p className="font-body text-sm md:text-[1rem] text-obsidian font-medium leading-relaxed max-w-xl mb-10 line-clamp-3 sm:line-clamp-none">
           Nestled in the heart of Pedda Golconda near Nehru ORR Exit 15, Hyderabad, Shrutham Convention brings together timeless elegance, state-of-the-art facilities with a capacity of up to 3,500 guests, and a dedicated team committed to flawless execution — from intimate gatherings to large-scale events.
         </p>
 
@@ -86,7 +83,7 @@ export default function Hero({ onOpenBookingTab }: HeroProps) {
           </button>
           <button
             onClick={() => handleScrollToSection('#events')}
-            className="btn-slide-outline flex items-center justify-center gap-2 font-body text-xs font-bold tracking-[0.16em] uppercase px-8 py-4 rounded-[4px] transition-all duration-300 cursor-pointer bg-[#620000] text-white hover:bg-[#800000] hover:text-white border-[#620000] shadow-sm"
+            className="btn-slide-outline flex items-center justify-center gap-2 font-body text-xs font-bold tracking-[0.16em] uppercase px-8 py-4 rounded-[4px] transition-all duration-300 cursor-pointer bg-white/70 shadow-sm"
           >
             <Compass size={14} /> Explore Our Spaces
           </button>

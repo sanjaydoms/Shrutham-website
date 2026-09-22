@@ -16,7 +16,7 @@ export default function Ticker() {
   const scrollItems = [...events, ...events, ...events];
 
   return (
-    <div className="bg-[#5c0202] mt-[15px] mb-[15px] h-[88px] flex items-center overflow-hidden whitespace-nowrap border-y border-red-950/10 select-none" aria-hidden="true">
+    <div className="bg-[#5c0202] h-[72px] md:h-[88px] flex items-center overflow-hidden whitespace-nowrap border-y border-red-950/10 select-none" aria-hidden="true">
       <div className="flex gap-12 w-max animate-ticker-scroll hover:[animation-play-state:paused] transition-all whitespace-nowrap">
         {scrollItems.map((item, index) => (
           <div key={index} className="flex items-center gap-10 whitespace-nowrap">

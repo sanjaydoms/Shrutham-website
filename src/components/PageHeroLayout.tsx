@@ -26,8 +26,8 @@ export default function PageHeroLayout({ title, navItems, paragraphs }: PageHero
       <div className="site-container px-6 md:px-12 lg:px-16 xl:px-24">
         {/* Huge Display Title */}
         <div className="mb-12 md:mb-16 select-none">
-          <h1 className="font-sans font-black text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight leading-none text-obsidian uppercase">
-            {title.endsWith('.') ? title : `${title}.`}
+          <h1 className="font-display font-light text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-obsidian">
+            {title.replace(/\.$/, '').toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase())}<span className="text-[#5c0202]">.</span>
           </h1>
         </div>
 
@@ -40,10 +40,10 @@ export default function PageHeroLayout({ title, navItems, paragraphs }: PageHero
               <button
                 key={idx}
                 onClick={() => handleItemClick(item)}
-                className={`text-left text-xs sm:text-sm font-medium tracking-tight hover:text-[#5c0202] transition-colors cursor-pointer py-1 block ${
-                  item.active 
-                    ? 'text-[#5c0202] font-semibold' 
-                    : 'text-[#2C2824]/65'
+                className={`relative text-left text-sm sm:text-[15px] font-medium hover:text-[#5c0202] transition-colors cursor-pointer py-1 pl-4 block bg-transparent border-none ${
+                  item.active
+                    ? 'text-[#5c0202] font-semibold before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-2 before:h-[2px] before:bg-[#5c0202]'
+                    : 'text-[#2C2824]'
                 }`}
               >
                 {item.label}
@@ -56,7 +56,7 @@ export default function PageHeroLayout({ title, navItems, paragraphs }: PageHero
             {paragraphs.map((para, idx) => (
               <div 
                 key={idx} 
-                className="text-[#2C2824] text-sm sm:text-base leading-relaxed font-light text-justify"
+                className="text-[#2C2824] text-sm sm:text-base leading-relaxed font-light"
               >
                 {para}
               </div>

@@ -1,94 +1,89 @@
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import Logo from './Logo';
+import footerImg from '../assets/images/shrutham_exterior_1782196718598.jpg';
+
+const QUICK_LINKS = [
+  { label: 'About Story', href: '#about' },
+  { label: 'Event Capabilities', href: '#events' },
+  { label: 'Spaces & Kitchen', href: '#facilities' },
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Travel Routes', href: '#location' },
+];
+
+const HOSTING = [
+  'Weddings & Receptions',
+  'AGM Corporate Reviews',
+  'Exhibitions & Expos',
+  'Product Unveilings',
+  'Classical Recitals',
+  'Private Celebrations',
+];
+
+const CONTACT = [
+  { icon: MapPin, content: <>Shrutham Convention, Near Nehru ORR Exit 15,<br />Pedda Golconda, Opposite Shree Mantra Convention,<br />Sanghiguda, Hyderabad, Telangana 501218</> },
+  { icon: Phone, content: <a href="tel:+919989912224" className="hover:text-[#D68B30] transition-colors">+91 99899 12224</a> },
+  { icon: Mail, content: <a href="mailto:shruthamconvention@gmail.com" className="hover:text-[#D68B30] transition-colors">shruthamconvention@gmail.com</a> },
+  { icon: Clock, content: 'Site Visits: 10:00 AM – 7:00 PM daily' },
+];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
+  const link = 'text-white/90 text-xs font-semibold hover:text-[#D68B30] transition-colors';
+  const heading = 'text-[10px] tracking-[0.2em] uppercase text-[#D68B30] font-bold mb-4';
 
   return (
-    <footer className="bg-[#F5F2EB] border-t border-gold/25 text-slate-custom/80 pt-20 pb-8 font-body" role="contentinfo">
-      <div className="site-container px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-16 pb-16 border-b border-gold/15">
-        
-        {/* Brand Segment */}
-        <div className="lg:col-span-4 space-y-4">
-          <div className="text-slate-custom">
-            <Logo variant="dark" size="lg" />
+    <footer className="relative overflow-hidden text-white font-body" role="contentinfo">
+      {/* Figma: photo, blur 6px, 2× black 20%, gold 15% wash */}
+      <img src={footerImg} alt="" aria-hidden="true" className="absolute inset-[-12px] w-[calc(100%+24px)] h-[calc(100%+24px)] object-cover blur-[6px] scale-105" />
+      <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
+      <div className="absolute inset-0 bg-[rgba(214,139,48,0.15)]" aria-hidden="true" />
+
+      <div className="relative mx-auto w-[min(100%-3rem,1351px)] pt-16 lg:pt-20 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[minmax(0,4fr)_minmax(0,2fr)_minmax(0,2fr)_minmax(0,4fr)] gap-x-10 xl:gap-x-16 gap-y-10">
+          {/* Brand */}
+          <div>
+            <Logo variant="light" size="md" />
+            <p className="mt-4 text-white/90 text-xs font-medium leading-relaxed max-w-[399px]">
+              Hyderabad’s ultra-premium convention, banquet, and exhibition pavilion near Nehru Outer Ring Road Exit 15, Pedda Golconda. Hosting generational social unions, high-profile summits, MICE conferences, and classical cultural expositions.
+            </p>
           </div>
-          <p className="text-xs font-medium leading-relaxed text-justify pr-4 text-slate-custom/90">
-            Hyderabad’s ultra-premium convention, banquet, and exhibition pavilion near Nehru Outer Ring Road Exit 15, Pedda Golconda. Hosting generational social unions, high-profile summits, MICE conferences, and classical cultural expositions.
-          </p>
-        </div>
 
-        {/* Directory links */}
-        <div className="lg:col-span-2 space-y-4">
-          <h4 className="text-[10px] tracking-[0.2em] uppercase text-[#5c0202] font-bold">Quick Directory</h4>
-          <ul className="space-y-2 list-none p-0 text-xs font-semibold">
-            <li><a href="#about" className="hover:text-gold text-slate-custom/80 transition-colors">About Story</a></li>
-            <li><a href="#events" className="hover:text-gold text-slate-custom/80 transition-colors">Event Capabilities</a></li>
-            <li><a href="#facilities" className="hover:text-gold text-slate-custom/80 transition-colors">Spaces &amp; Kitchen</a></li>
-            <li><a href="#gallery" className="hover:text-gold text-slate-custom/80 transition-colors">Layout Gallery</a></li>
-            <li><a href="#location" className="hover:text-gold text-slate-custom/80 transition-colors">Travel Routes</a></li>
-            <li><a href="#booking-tool" className="hover:text-gold text-slate-custom/80 transition-colors">Check Pricing</a></li>
-          </ul>
-        </div>
+          <div>
+            <h4 className={heading}>Quick Links</h4>
+            <ul className="list-none m-0 p-0 space-y-2">
+              {QUICK_LINKS.map((l) => <li key={l.label}><a href={l.href} className={link}>{l.label}</a></li>)}
+            </ul>
+          </div>
 
-        {/* Offerings list */}
-        <div className="lg:col-span-2 space-y-4">
-          <h4 className="text-[10px] tracking-[0.2em] uppercase text-[#5c0202] font-bold">What We Host</h4>
-          <ul className="space-y-2 list-none p-0 text-xs font-semibold">
-            <li><a href="#events" className="hover:text-gold text-slate-custom/80 transition-colors">Weddings &amp; Receptions</a></li>
-            <li><a href="#events" className="hover:text-gold text-slate-custom/80 transition-colors">AGM Corporate Reviews</a></li>
-            <li><a href="#events" className="hover:text-gold text-slate-custom/80 transition-colors">Exhibitions &amp; Expos</a></li>
-            <li><a href="#events" className="hover:text-gold text-slate-custom/80 transition-colors">Product Unveilings</a></li>
-            <li><a href="#events" className="hover:text-gold text-slate-custom/80 transition-colors">Classical Recitals</a></li>
-          </ul>
-        </div>
+          <div>
+            <h4 className={`${heading} whitespace-nowrap`}>What We Host</h4>
+            <ul className="list-none m-0 p-0 space-y-2">
+              {HOSTING.map((h) => <li key={h}><a href="#events" className={`${link} whitespace-nowrap`}>{h}</a></li>)}
+            </ul>
+          </div>
 
-        {/* Contact info card */}
-        <div className="lg:col-span-4 space-y-4">
-          <h4 className="text-[10px] tracking-[0.2em] uppercase text-[#5c0202] font-bold">Inquiries &amp; Coordinates</h4>
-          <div className="space-y-3.5 text-xs font-medium text-slate-custom/90">
-            
-            <div className="flex gap-3 items-start">
-              <MapPin size={14} className="text-[#9B752E] shrink-0 mt-0.5" />
-              <div className="leading-tight text-slate-custom">
-                Shrutham Convention, Near Nehru ORR Exit 15,<br />
-                Pedda Golconda, Opposite Shree Mantra Convention,<br />
-                Sanghiguda, Hyderabad, Telangana 501218
-              </div>
-            </div>
-
-            <div className="flex gap-3 items-center">
-              <Phone size={14} className="text-[#9B752E] shrink-0" />
-              <a href="tel:+919989912224" className="hover:text-gold font-semibold text-slate-custom transition-colors">
-                +91 99899 12224
-              </a>
-            </div>
-
-            <div className="flex gap-3 items-center">
-              <Mail size={14} className="text-[#9B752E] shrink-0" />
-              <a href="mailto:shruthamconvention@gmail.com" className="hover:text-gold text-slate-custom transition-colors">
-                shruthamconvention@gmail.com
-              </a>
-            </div>
-
-            <div className="flex gap-3 items-center text-slate-custom/80">
-              <Clock size={14} className="text-[#9B752E] shrink-0" />
-              <span>Site Visits: 10:00 AM – 7:00 PM daily</span>
-            </div>
-
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h4 className={heading}>Inquiries &amp; Coordinates</h4>
+            <ul className="list-none m-0 p-0 space-y-3.5">
+              {CONTACT.map(({ icon: Icon, content }, i) => (
+                <li key={i} className="flex gap-3 items-start text-white/90 text-xs font-medium leading-relaxed">
+                  <Icon size={14} className="text-[#D68B30] shrink-0 mt-0.5" fill={i < 2 ? '#D68B30' : 'none'} strokeWidth={i < 2 ? 1 : 2} />
+                  <span>{content}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-      </div>
+        <hr className="border-0 border-t border-[#D68B30]/70 mt-12 lg:mt-14 mb-8" />
 
-      <div className="site-container px-6 md:px-12 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs font-medium gap-4 transition-all text-slate-custom/60">
-        <div>
-          © {currentYear} Shrutham Convention Centre. Pedda Golconda, Hyderabad, Telangana. All Rights Secured.
-        </div>
-        <div className="flex gap-6">
-          <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-gold transition-colors">Privacy Policy</a>
-          <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-gold transition-colors">Terms of Rental</a>
-          <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-gold transition-colors">Sitemap</a>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:pr-20 text-white/80 text-xs font-medium">
+          <p className="m-0">© {year} Shrutham Convention Centre. All Rights Secured.</p>
+          <div className="flex flex-wrap gap-x-6">
+            <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-[#D68B30] transition-colors">Privacy Policy</a>
+            <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-[#D68B30] transition-colors">Terms of Rental</a>
+            <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-[#D68B30] transition-colors">Sitemap</a>
+          </div>
         </div>
       </div>
     </footer>

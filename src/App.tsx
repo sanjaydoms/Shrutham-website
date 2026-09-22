@@ -116,6 +116,8 @@ export default function App() {
       }
 
       setCurrentPage(targetPage);
+      if (targetPage === 'home') document.title = 'Shrutham Convention | Best Venue in Hyderabad for Events';
+      if (targetPage === 'contact') document.title = 'Contact Us | Shrutham Convention, Hyderabad';
 
       // Scroll behavior logic:
       if (targetPage === 'home') {
@@ -146,7 +148,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-chalk luxe-grid-bg text-slate-custom min-h-screen relative overflow-x-hidden selection:bg-[#5c0202] selection:text-white scroll-smooth">
+    <div className="bg-chalk luxe-grid-bg text-slate-custom min-h-screen relative overflow-x-hidden selection:bg-[#5c0202] selection:text-white scroll-smooth pb-[76px] md:pb-0">
       {/* Premium Top Navigation header */}
       <Header onOpenBookingTab={handleOpenBookingTab} currentPage={currentPage} />
 
@@ -204,9 +206,7 @@ export default function App() {
       )}
 
       {currentPage === 'about' && (
-        <main className="relative overflow-hidden animate-fade-in pt-28 pb-10">
-          <WavyRibbon className="top-[350px] left-0" opacity={0.24} />
-          <WavyRibbon className="top-[1100px] right-0" reverse opacity={0.24} />
+        <main className="relative animate-fade-in pt-[72px] lg:pt-[80px]">
           <AboutUsPage onInquire={handleOpenBookingTab} />
         </main>
       )}
@@ -274,6 +274,11 @@ export default function App() {
           <WavyRibbon className="top-[350px] right-0" reverse opacity={0.24} />
  
           <div className="py-20 bg-white border-b border-[#5c0202]/10">
+            <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 xl:px-24 mb-14 text-center font-body">
+              <span className="block text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-[#5c0202] mb-3">Get in touch</span>
+              <h1 className="font-display text-4xl sm:text-5xl font-light text-obsidian tracking-tight leading-tight">Contact Us</h1>
+              <p className="mt-4 text-sm text-mid font-light max-w-xl mx-auto">Check availability, schedule a guided walk-through, or ask about packages — our team replies within two hours during working hours.</p>
+            </div>
             <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 xl:px-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               
               <div className="bg-chalk p-8 md:p-12 border border-[#5c0202]/15 rounded-[2px] shadow-sm">
@@ -404,7 +409,7 @@ export default function App() {
       )}
 
       {currentPage === 'event-detail' && (
-        <main className="animate-fade-in pt-16">
+        <main className="animate-fade-in pt-16 lg:pt-[80px]">
           <EventDetailView 
             eventId={activeEventId} 
             onBackToPage={(page) => {
