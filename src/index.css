@@ -33,6 +33,21 @@
   --white: #FFFFFF;
   --border: rgba(92,2,2,0.18);
 
+  /* Page design system — one palette shared by the ported Services / Events / Spaces pages,
+     so section themes stay consistent with the rest of the site instead of each page
+     inventing its own maroon and gold. */
+  --ds-brand: #5c0202;        /* brand crimson — primary bands, buttons, active states */
+  --ds-brand-deep: #3B0A0A;   /* deep crimson — full-bleed dark moments */
+  --ds-gold: #D68B30;         /* gold accent on light grounds */
+  --ds-gold-soft: #E5C084;    /* gold accent on dark grounds */
+  --ds-cream: #FCFAF5;        /* default page ground */
+  --ds-cream-deep: #F3EDE2;   /* alternate ground for contrast between light sections */
+  --ds-surface: #FFFFFF;      /* alternate ground */
+  --ds-ink: #0A0908;          /* headings */
+  --ds-body: #2C2824;         /* body copy */
+  --ds-line: rgba(92, 2, 2, 0.12);
+  --ds-line-dark: rgba(255, 255, 255, 0.14);
+
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'Inter', sans-serif;
 

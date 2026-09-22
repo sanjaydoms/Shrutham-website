@@ -1,18 +1,20 @@
 /*
- * Our Spaces page — styles ported from shrutham.zip (2), scoped under .spaces-page so the
- * delivered generic class names (.container, .eyebrow, .explore-link …) cannot leak into
- * other pages. Headings use the site's display face (Cormorant Garamond) in place of Playfair.
+ * Our Spaces page — layout ported from shrutham.zip (2), scoped under .spaces-page so the
+ * delivered generic class names (.container, .eyebrow, .explore-link …) cannot leak out.
+ *
+ * Colour comes from the shared page design system (--ds-* in index.css) rather than the zip's
+ * own maroon/gold, so this page, Events and Services read as one design system.
  */
 .spaces-page {
-  --sp-bg: #F9F8F6;
-  --sp-maroon: #682c35;
-  --sp-charcoal: #2A2A2A;
-  --sp-gold: #c3a371;
-  --sp-heading: 'Cormorant Garamond', serif;
-  --sp-body: 'Inter', sans-serif;
+  --sp-bg: var(--ds-cream);
+  --sp-maroon: var(--ds-brand);
+  --sp-charcoal: var(--ds-ink);
+  --sp-gold: var(--ds-gold);
+  --sp-heading: var(--font-display);
+  --sp-body: var(--font-body);
 
   background: var(--sp-bg);
-  color: var(--sp-charcoal);
+  color: var(--ds-body);
   font-family: var(--sp-body);
   line-height: 1.6;
   padding-bottom: 5rem;
@@ -39,9 +41,9 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.25em;
-  color: var(--sp-gold);
+  color: var(--ds-brand);
 }
-.spaces-page .eyebrow.light { color: #eeddcc; }
+.spaces-page .eyebrow.light { color: var(--ds-gold-soft); }
 
 .spaces-page .explore-link {
   display: inline-flex;
@@ -64,19 +66,19 @@
 .spaces-page .spaces-hero { padding-top: 5rem; min-height: 90vh; display: flex; flex-direction: column; }
 .spaces-page .spaces-hero-content { text-align: center; max-width: 900px; margin: 0 auto; padding: 2rem 5%; }
 .spaces-page .spaces-hero h1 { font-family: var(--sp-heading); font-weight: 300; font-size: clamp(2.5rem, 6vw, 5rem); color: var(--sp-charcoal); margin: 1rem 0 2rem; line-height: 1.05; }
-.spaces-page .spaces-hero p { font-size: 1.25rem; color: #555; margin-bottom: 2rem; }
+.spaces-page .spaces-hero p { font-size: 1.25rem; color: var(--ds-body); margin-bottom: 2rem; }
 .spaces-page .spaces-hero-img-wrapper { margin-top: 3rem; height: 60vh; min-height: 360px; overflow: hidden; position: relative; }
 .spaces-page .spaces-hero-img-wrapper img { width: 100%; height: 130%; object-fit: cover; position: absolute; top: -15%; }
 
 /* Finder nav */
-.spaces-page .space-finder-section { background: #fff; scroll-margin-top: 100px; }
+.spaces-page .space-finder-section { background: var(--ds-surface); scroll-margin-top: 100px; }
 .spaces-page .finder-categories { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
 .spaces-page .finder-btn { font-family: var(--sp-heading); font-size: 1.8rem; background: none; border: none; color: #ccc; cursor: pointer; transition: 0.3s; padding: 0; }
 .spaces-page .finder-btn:hover,
 .spaces-page .finder-btn.active { color: var(--sp-maroon); }
 .spaces-page .finder-filters { margin-top: 2rem; }
-.spaces-page .filter-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-right: 1rem; color: #666; }
-.spaces-page .filter-chip { background: transparent; border: 1px solid #ddd; padding: 0.5rem 1.5rem; border-radius: 30px; margin: 0 0.35rem; font-size: 0.85rem; cursor: pointer; transition: 0.3s; color: var(--sp-charcoal); }
+.spaces-page .filter-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-right: 1rem; color: var(--ds-body); }
+.spaces-page .filter-chip { background: transparent; border: 1px solid var(--ds-line); padding: 0.5rem 1.5rem; border-radius: 30px; margin: 0 0.35rem; font-size: 0.85rem; cursor: pointer; transition: 0.3s; color: var(--sp-charcoal); }
 .spaces-page .filter-chip:hover,
 .spaces-page .filter-chip.active { background: var(--sp-charcoal); color: #fff; border-color: var(--sp-charcoal); }
 
@@ -84,9 +86,9 @@
 .spaces-page .featured-space-section { padding: 6rem 0 9rem; }
 .spaces-page .featured-wrapper { position: relative; height: 75vh; min-height: 420px; width: 90%; margin: 0 auto; }
 .spaces-page .featured-img { width: 100%; height: 100%; object-fit: cover; }
-.spaces-page .featured-card { position: absolute; bottom: -3rem; right: -2rem; background: #fff; padding: 3rem; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08); max-width: 450px; }
+.spaces-page .featured-card { position: absolute; bottom: -3rem; right: -2rem; background: var(--ds-surface); padding: 3rem; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08); max-width: 450px; }
 .spaces-page .featured-card h3 { font-size: clamp(2rem, 3vw, 3rem); margin: 1rem 0; color: var(--sp-charcoal); }
-.spaces-page .featured-meta { color: #666; font-size: 0.95rem; margin-bottom: 2rem; letter-spacing: 0.05em; }
+.spaces-page .featured-meta { color: var(--ds-body); font-size: 0.95rem; margin-bottom: 2rem; letter-spacing: 0.05em; }
 
 /* Explore all — asymmetric grid */
 .spaces-page .explore-all-section { padding: 8rem 0; }
@@ -124,7 +126,7 @@
 .spaces-page .story-text h3 { font-size: clamp(2.25rem, 5vw, 5rem); margin: 1rem 0 0; color: var(--sp-charcoal); line-height: 1.05; }
 
 /* Gallery */
-.spaces-page .spaces-gallery-section { padding: 8rem 5%; background: #fff; }
+.spaces-page .spaces-gallery-section { padding: 8rem 5%; background: var(--ds-surface); }
 .spaces-page .spaces-gallery-section h2 { margin-bottom: 3rem; font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: 0.04em; }
 .spaces-page .immersive-gallery { display: flex; flex-direction: column; gap: 2rem; }
 .spaces-page .gallery-row-1 { display: flex; gap: 2rem; }
@@ -141,22 +143,22 @@
 .spaces-page .testimonial-photo { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
 .spaces-page .testimonial-content { max-width: 900px; position: relative; min-height: 250px; margin-top: 2.5rem; }
 .spaces-page .serif-heading.quote { font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.2; color: var(--sp-charcoal); margin: 0; }
-.spaces-page .client-name { font-family: var(--sp-body); letter-spacing: 0.12em; font-size: 0.8rem; font-weight: 600; color: #666; margin-top: 1.5rem; text-transform: uppercase; }
-.spaces-page .testimonial-controls { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #ccc; padding-top: 2rem; margin-top: 2.5rem; }
-.spaces-page .testi-count { font-size: 0.8rem; letter-spacing: 0.1em; color: #666; font-variant-numeric: tabular-nums; }
+.spaces-page .client-name { font-family: var(--sp-body); letter-spacing: 0.12em; font-size: 0.8rem; font-weight: 600; color: var(--ds-body); margin-top: 1.5rem; text-transform: uppercase; }
+.spaces-page .testimonial-controls { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--ds-line); padding-top: 2rem; margin-top: 2.5rem; }
+.spaces-page .testi-count { font-size: 0.8rem; letter-spacing: 0.1em; color: var(--ds-body); font-variant-numeric: tabular-nums; }
 .spaces-page .arrows button { background: none; border: none; cursor: pointer; margin-left: 1.5rem; color: var(--sp-charcoal); transition: color 0.3s; padding: 0.25rem; }
 .spaces-page .arrows button:hover { color: var(--sp-maroon); }
 
 /* Minimal FAQ */
-.spaces-page .spaces-faq-section { padding: 6rem 5%; background: #fff; }
+.spaces-page .spaces-faq-section { padding: 6rem 5%; background: var(--ds-surface); }
 .spaces-page .spaces-faq-section h2 { margin-bottom: 3rem; font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: 0.04em; }
-.spaces-page .minimal-faq-item { border-bottom: 1px solid #eee; }
+.spaces-page .minimal-faq-item { border-bottom: 1px solid var(--ds-line); }
 .spaces-page .minimal-faq-item button {
   width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
   padding: 2rem 0; background: none; border: none;
   font-family: var(--sp-heading); font-size: 1.35rem; color: var(--sp-charcoal); cursor: pointer; text-align: left;
 }
-.spaces-page .minimal-faq-answer { padding-bottom: 2rem; color: #555; font-size: 1rem; line-height: 1.7; }
+.spaces-page .minimal-faq-answer { padding-bottom: 2rem; color: var(--ds-body); font-size: 1rem; line-height: 1.7; }
 
 /* CTA */
 .spaces-page .cta-full-image { position: relative; height: 85vh; min-height: 460px; }
@@ -167,7 +169,7 @@
 .spaces-page .light-p { color: rgba(255, 255, 255, 0.9); font-size: 1.125rem; margin: 0 auto 2.5rem; max-width: 480px; }
 .spaces-page .light-btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  background: #fff; color: var(--sp-charcoal);
+  background: #fff; color: var(--ds-brand);
   padding: 1.1rem 2.25rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
   transition: 0.3s;
 }

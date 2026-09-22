@@ -1,17 +1,19 @@
 /*
- * Services page — styles ported from shrutham.zip (src/index.css), scoped under .services-page
- * so the zip's generic class names (.hero, .container, .overlay …) cannot leak into other pages.
- * Headings use the site's display face (Cormorant Garamond) rather than the zip's Playfair.
+ * Services page — layout ported from shrutham.zip (src/index.css), scoped under .services-page
+ * so the zip's generic class names (.hero, .container, .overlay …) cannot leak out.
+ *
+ * Colour comes from the shared page design system (--ds-* in index.css) rather than the zip's
+ * own gold, so this page, Events and Spaces read as one design system.
  */
 .services-page {
-  --svc-bg: #FCFAF5;
-  --svc-text: #1A1A1A;
-  --svc-muted: #5C5C5C;
-  --svc-accent: #B59A53;
-  --svc-crimson: #5c0202;
-  --svc-light: #FFFFFF;
-  --svc-heading: 'Cormorant Garamond', serif;
-  --svc-body: 'Inter', sans-serif;
+  --svc-bg: var(--ds-cream);
+  --svc-text: var(--ds-ink);
+  --svc-muted: var(--ds-body);
+  --svc-accent: var(--ds-gold);
+  --svc-crimson: var(--ds-brand);
+  --svc-light: var(--ds-surface);
+  --svc-heading: var(--font-display);
+  --svc-body: var(--font-body);
   --svc-transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   font-family: var(--svc-body);
@@ -46,10 +48,10 @@
   text-transform: uppercase;
   display: block;
   margin-bottom: 1.5rem;
-  color: var(--svc-accent);
+  color: var(--svc-crimson);
 }
 .services-page .eyebrow.light { color: rgba(255, 255, 255, 0.7); }
-.services-page .thin-line { border: none; border-top: 1px solid rgba(0, 0, 0, 0.1); margin: 3rem 0; }
+.services-page .thin-line { border: none; border-top: 1px solid var(--ds-line); margin: 3rem 0; }
 
 /* Buttons */
 .services-page .btn-primary,
@@ -98,6 +100,7 @@
 .services-page .hero-content .btn-primary:hover { background-color: transparent; color: var(--svc-light); }
 
 /* 02 Intro */
+.services-page .intro { background: var(--ds-surface); }
 .services-page .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
 .services-page .intro-left h2 { margin: 0; }
 .services-page .intro-right p { font-size: 1.25rem; }
@@ -106,7 +109,7 @@
   font-family: var(--svc-heading); font-size: 1.6rem; color: var(--svc-muted);
 }
 .services-page .service-links a:hover { color: var(--svc-crimson); }
-.services-page .service-links .dot { color: var(--svc-accent); }
+.services-page .service-links .dot { color: var(--svc-crimson); }
 
 /* 03 Bento grid */
 .services-page .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 400px 400px; gap: 20px; width: 100%; }
@@ -136,7 +139,7 @@
 .services-page .process-heading { margin-bottom: 4rem; }
 .services-page .process-grid { display: flex; justify-content: space-between; align-items: flex-start; }
 .services-page .process-step { flex: 1; padding: 0 1rem; }
-.services-page .step-num { font-family: var(--svc-heading); font-size: 2.25rem; color: var(--svc-accent); margin-bottom: 1rem; line-height: 1; }
+.services-page .step-num { font-family: var(--svc-heading); font-size: 2.25rem; color: var(--svc-crimson); margin-bottom: 1rem; line-height: 1; }
 .services-page .process-step h5 { font-family: var(--svc-body); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 1rem; line-height: 1.5; }
 .services-page .process-step p { font-size: 0.9rem; }
 .services-page .process-divider { width: 1px; height: 100px; background-color: rgba(0, 0, 0, 0.1); margin: 2rem 1rem 0; }
@@ -155,15 +158,15 @@
 
 /* 06 FAQ */
 .services-page .faq-section { max-width: 800px; }
-.services-page .faq-heading { margin-bottom: 3rem; font-family: var(--svc-body); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.25em; color: var(--svc-accent); }
-.services-page .faq-list { border-top: 1px solid rgba(0, 0, 0, 0.1); }
-.services-page .faq-item { border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+.services-page .faq-heading { margin-bottom: 3rem; font-family: var(--svc-body); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.25em; color: var(--svc-crimson); }
+.services-page .faq-list { border-top: 1px solid var(--ds-line); }
+.services-page .faq-item { border-bottom: 1px solid var(--ds-line); }
 .services-page .faq-question {
   width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
   padding: 1.5rem 0; background: none; border: none;
   font-family: var(--svc-heading); font-size: 1.5rem; color: var(--svc-text); cursor: pointer; text-align: left;
 }
-.services-page .faq-question .plus-icon { display: inline-flex; color: var(--svc-accent); flex-shrink: 0; }
+.services-page .faq-question .plus-icon { display: inline-flex; color: var(--svc-crimson); flex-shrink: 0; }
 .services-page .faq-answer p { padding-top: 0.25rem; padding-bottom: 1.5rem; }
 
 /* 07 Final CTA */
