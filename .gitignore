@@ -6,3 +6,6 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# raw camera originals (keep the web-sized copies instead)
+src/assets/images/Main hero *.jpeg

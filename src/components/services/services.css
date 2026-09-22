@@ -1,0 +1,198 @@
+/*
+ * Services page — styles ported from shrutham.zip (src/index.css), scoped under .services-page
+ * so the zip's generic class names (.hero, .container, .overlay …) cannot leak into other pages.
+ * Headings use the site's display face (Cormorant Garamond) rather than the zip's Playfair.
+ */
+.services-page {
+  --svc-bg: #FCFAF5;
+  --svc-text: #1A1A1A;
+  --svc-muted: #5C5C5C;
+  --svc-accent: #B59A53;
+  --svc-crimson: #5c0202;
+  --svc-light: #FFFFFF;
+  --svc-heading: 'Cormorant Garamond', serif;
+  --svc-body: 'Inter', sans-serif;
+  --svc-transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  font-family: var(--svc-body);
+  color: var(--svc-text);
+  background-color: var(--svc-bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.services-page img { max-width: 100%; height: auto; display: block; }
+.services-page a { text-decoration: none; color: inherit; transition: var(--svc-transition); }
+
+.services-page .container { max-width: 1440px; margin: 0 auto; padding: 0 5%; }
+.services-page .section-padding { padding: 120px 0; }
+.services-page .text-center { text-align: center; }
+
+/* Typography */
+.services-page h1,
+.services-page h2,
+.services-page h3,
+.services-page .process-heading { font-family: var(--svc-heading); font-weight: 300; }
+.services-page h1 { font-size: clamp(3rem, 5vw, 4.75rem); line-height: 1.05; margin-bottom: 1.5rem; }
+.services-page h2 { font-size: clamp(2.5rem, 4vw, 3.75rem); line-height: 1.15; margin-bottom: 1rem; }
+.services-page h3 { font-size: clamp(2rem, 3vw, 2.75rem); line-height: 1.2; margin-bottom: 0.5rem; }
+.services-page p { font-size: 1.125rem; color: var(--svc-muted); max-width: 600px; }
+
+.services-page .eyebrow {
+  font-family: var(--svc-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.5rem;
+  color: var(--svc-accent);
+}
+.services-page .eyebrow.light { color: rgba(255, 255, 255, 0.7); }
+.services-page .thin-line { border: none; border-top: 1px solid rgba(0, 0, 0, 0.1); margin: 3rem 0; }
+
+/* Buttons */
+.services-page .btn-primary,
+.services-page .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  font-family: var(--svc-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--svc-transition);
+}
+.services-page .btn-primary { background-color: var(--svc-crimson); color: var(--svc-light); border: 1px solid var(--svc-crimson); }
+.services-page .btn-primary:hover { background-color: transparent; color: var(--svc-crimson); }
+.services-page .btn-outline { background-color: transparent; color: var(--svc-text); border: 1px solid var(--svc-text); }
+.services-page .btn-outline:hover { background-color: var(--svc-text); color: var(--svc-light); }
+.services-page .btn-outline.light { color: var(--svc-light); border-color: var(--svc-light); }
+.services-page .btn-outline.light:hover { background-color: var(--svc-light); color: var(--svc-text); }
+.services-page .arrow { margin-left: 0.5rem; transition: var(--svc-transition); }
+.services-page a:hover .arrow { transform: translateX(5px); }
+
+/* 01 Hero */
+.services-page .hero {
+  position: relative;
+  height: 85vh;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  overflow: hidden;
+}
+.services-page .hero-bg { position: absolute; top: -10%; left: 0; width: 100%; height: 120%; z-index: 0; }
+.services-page .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.services-page .overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+.services-page .hero-content { position: relative; z-index: 1; max-width: 700px; color: var(--svc-light); }
+.services-page .hero-content h1 { color: var(--svc-light); }
+.services-page .hero-content p { color: rgba(255, 255, 255, 0.9); margin-bottom: 2.5rem; font-size: 1.25rem; }
+.services-page .hero-content .btn-primary { background-color: var(--svc-light); color: var(--svc-text); border-color: var(--svc-light); }
+.services-page .hero-content .btn-primary:hover { background-color: transparent; color: var(--svc-light); }
+
+/* 02 Intro */
+.services-page .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.services-page .intro-left h2 { margin: 0; }
+.services-page .intro-right p { font-size: 1.25rem; }
+.services-page .service-links {
+  display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap;
+  font-family: var(--svc-heading); font-size: 1.6rem; color: var(--svc-muted);
+}
+.services-page .service-links a:hover { color: var(--svc-crimson); }
+.services-page .service-links .dot { color: var(--svc-accent); }
+
+/* 03 Bento grid */
+.services-page .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 400px 400px; gap: 20px; width: 100%; }
+.services-page .bento-item {
+  position: relative; border-radius: 12px; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 2.5rem;
+  background-size: cover; background-position: center; color: var(--svc-light);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  scroll-margin-top: 100px;
+}
+.services-page .bento-item:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); }
+.services-page .bento-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.1) 70%); z-index: 1; }
+.services-page .bento-content { position: relative; z-index: 2; }
+.services-page .bento-number { font-family: var(--svc-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; color: var(--svc-accent); margin-bottom: 0.5rem; display: inline-block; }
+.services-page .bento-content h3 { font-size: 2.25rem; margin-bottom: 0.5rem; color: var(--svc-light); }
+.services-page .bento-content p { font-size: 1rem; color: rgba(255, 255, 255, 0.8); margin-bottom: 1.5rem; max-width: 90%; }
+.services-page .explore-btn {
+  font-family: var(--svc-body); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.12em; font-weight: 600;
+  display: inline-flex; align-items: center; border-bottom: 1px solid var(--svc-light); padding-bottom: 0.25rem;
+}
+.services-page .bento-item:hover .arrow { transform: translateX(5px); }
+.services-page .bento-large { grid-column: span 2; grid-row: span 2; }
+.services-page .bento-wide { grid-column: span 2; grid-row: span 1; }
+.services-page .bento-square { grid-column: span 1; grid-row: span 1; }
+
+/* 04 Process */
+.services-page .process-heading { margin-bottom: 4rem; }
+.services-page .process-grid { display: flex; justify-content: space-between; align-items: flex-start; }
+.services-page .process-step { flex: 1; padding: 0 1rem; }
+.services-page .step-num { font-family: var(--svc-heading); font-size: 2.25rem; color: var(--svc-accent); margin-bottom: 1rem; line-height: 1; }
+.services-page .process-step h5 { font-family: var(--svc-body); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 1rem; line-height: 1.5; }
+.services-page .process-step p { font-size: 0.9rem; }
+.services-page .process-divider { width: 1px; height: 100px; background-color: rgba(0, 0, 0, 0.1); margin: 2rem 1rem 0; }
+
+/* 05 Emotional break */
+.services-page .emotional-break {
+  position: relative; height: 80vh; min-height: 480px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; text-align: center; color: var(--svc-light);
+}
+.services-page .break-bg { position: absolute; inset: 0; z-index: 0; }
+.services-page .break-bg img { width: 100%; height: 100%; object-fit: cover; }
+.services-page .break-bg::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); }
+.services-page .break-content { position: relative; z-index: 1; max-width: 800px; padding: 0 5%; }
+.services-page .break-content h2 { color: var(--svc-light); }
+.services-page .break-content p { color: var(--svc-light); font-size: 1.25rem; margin: 0 auto; }
+
+/* 06 FAQ */
+.services-page .faq-section { max-width: 800px; }
+.services-page .faq-heading { margin-bottom: 3rem; font-family: var(--svc-body); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.25em; color: var(--svc-accent); }
+.services-page .faq-list { border-top: 1px solid rgba(0, 0, 0, 0.1); }
+.services-page .faq-item { border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+.services-page .faq-question {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: 1.5rem 0; background: none; border: none;
+  font-family: var(--svc-heading); font-size: 1.5rem; color: var(--svc-text); cursor: pointer; text-align: left;
+}
+.services-page .faq-question .plus-icon { display: inline-flex; color: var(--svc-accent); flex-shrink: 0; }
+.services-page .faq-answer p { padding-top: 0.25rem; padding-bottom: 1.5rem; }
+
+/* 07 Final CTA */
+.services-page .final-cta { position: relative; padding: 8rem 0; color: var(--svc-light); overflow: hidden; }
+.services-page .cta-bg { position: absolute; inset: 0; z-index: 0; }
+.services-page .cta-bg img { width: 100%; height: 100%; object-fit: cover; }
+.services-page .cta-overlay { position: absolute; inset: 0; background: rgba(34, 34, 34, 0.75); }
+.services-page .cta-content { position: relative; z-index: 1; }
+.services-page .cta-content h2 { color: var(--svc-light); margin-bottom: 3rem; }
+.services-page .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .services-page .intro-grid { gap: 2rem; }
+  .services-page .bento-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; grid-auto-rows: 350px; }
+  .services-page .bento-large { grid-column: span 2; grid-row: span 2; }
+  .services-page .bento-wide,
+  .services-page .bento-square { grid-column: span 1; grid-row: span 1; }
+}
+@media (max-width: 768px) {
+  .services-page .section-padding { padding: 80px 0; }
+  .services-page .hero { height: 70vh; }
+  .services-page .intro-grid { grid-template-columns: 1fr; }
+  .services-page .bento-grid { grid-template-columns: 1fr; grid-auto-rows: 320px; }
+  .services-page .bento-large,
+  .services-page .bento-wide,
+  .services-page .bento-square { grid-column: span 1; grid-row: span 1; }
+  .services-page .bento-item { padding: 1.75rem; }
+  .services-page .process-grid { flex-direction: column; gap: 2rem; }
+  .services-page .process-divider { display: none; }
+  .services-page .faq-question { font-size: 1.25rem; }
+}

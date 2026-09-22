@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../assets/images/Logo.png';
 
 interface LogoProps {
   variant?: 'light' | 'dark' | 'color';
@@ -8,96 +9,40 @@ interface LogoProps {
   style?: React.CSSProperties;
 }
 
-export default function Logo({
-  variant = 'color',
-  className = '',
-  iconOnly = false,
-  size = 'md',
-  style,
-}: LogoProps) {
-  // Brand colors determined dynamically
-  // Monogram Red: #5E0910
-  // Monogram Gold: #DF9426
-  
-  const iconColor = variant === 'light' ? '#ffffff' : '#DF9426';
-  const textColor = variant === 'light' ? '#ffffff' : '#5E0910';
-  const subColor = variant === 'light' ? 'rgba(255,255,255,0.8)' : '#DF9426';
+// Rendered height of the lockup per size (the PNG is 816×306, monogram in the left ~25%)
+const HEIGHT = { sm: 32, md: 48, lg: 64 };
 
-  const sizeClasses = {
-    sm: { icon: 'h-8 w-8', text: 'text-lg', sub: 'text-[6.5px]' },
-    md: { icon: 'h-10 w-10', text: 'text-2xl', sub: 'text-[8.5px]' },
-    lg: { icon: 'h-16 w-16', text: 'text-4xl', sub: 'text-[11px]' },
-  }[size];
+export default function Logo({ variant = 'color', className = '', iconOnly = false, size = 'md', style }: LogoProps) {
+  const h = HEIGHT[size];
+  const tone = variant === 'light' ? 'brightness-0 invert' : '';
+
+  if (iconOnly) {
+    // Crop to the monogram (x ≈ 0.12h–0.68h of the lockup): show a 0.57h window starting 0.1h in
+    return (
+      <span
+        role="img"
+        aria-label="Shrutham"
+        style={{ ...style, width: h * 0.57, height: h }}
+        className={`relative inline-block overflow-hidden shrink-0 select-none ${className}`}
+      >
+        <img
+          src={logo}
+          alt=""
+          draggable={false}
+          className={`absolute top-0 max-w-none ${tone}`}
+          style={{ height: h, left: -h * 0.1 }}
+        />
+      </span>
+    );
+  }
 
   return (
-    <div style={style} className={`flex items-center gap-3 select-none ${className}`}>
-      
-      {/* Dynamic inline SVG reproduction of the elegant Shrutham Monogram */}
-      <div className={`relative shrink-0 ${sizeClasses.icon}`}>
-        <svg
-          viewBox="0 0 100 100"
-          className="w-full h-full"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Sweeping Elegant Curved Leaf/Pillar Loop on Left */}
-          <path
-            d="M 52 14
-               C 34 14, 18 24, 18 48
-               C 18 70, 32 82, 48 82"
-            stroke={iconColor}
-            strokeWidth="5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Golden Triangle Pedestal Base */}
-          <path
-            d="M 21 82
-               L 80 82
-               L 50 49
-               Z"
-            stroke={iconColor}
-            strokeWidth="5.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Graceful inner spiral/diya flame */}
-          <path
-            d="M 50 49
-               C 38 40, 42 26, 52 26
-               C 62 26, 62 38, 54 44
-               C 48 48, 44 38, 50 34"
-            stroke={iconColor}
-            strokeWidth="5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Core Sparkle dot inside the spiral */}
-          <circle cx="51.5" cy="33.5" r="3.5" fill={iconColor} />
-        </svg>
-      </div>
-
-      {!iconOnly && (
-        <div className="flex flex-col justify-center leading-none">
-          {/* Shrutham beautiful custom serif with Cormorant Garamond style typography */}
-          <span 
-            className={`font-display font-light tracking-wide ${sizeClasses.text} transition-colors duration-300`}
-            style={{ color: textColor }}
-          >
-            Shrutham
-          </span>
-          {/* CONVENTIONS wide tracking subtitle */}
-          <span 
-            className={`font-body font-bold tracking-[0.3em] uppercase transition-colors duration-300 ${sizeClasses.sub} mt-1`}
-            style={{ color: subColor }}
-          >
-            CONVENTIONS
-          </span>
-        </div>
-      )}
-    </div>
+    <img
+      src={logo}
+      alt="Shrutham Conventions"
+      draggable={false}
+      style={{ ...style, height: h }}
+      className={`block w-auto max-w-none select-none ${tone} ${className}`}
+    />
   );
 }

@@ -8,7 +8,7 @@ import AboutStatsSection from './components/AboutStatsSection';
 import OurStory from './components/OurStory';
 import AboutExtended from './components/AboutExtended';
 import AboutUsPage from './components/AboutUsPage';
-import ServicesExtended from './components/ServicesExtended';
+import ServicesPage from './components/services/ServicesPage';
 import EventsGrid from './components/EventsGrid';
 import FacilitiesGrid from './components/FacilitiesGrid';
 import BookingSystem from './components/BookingSystem';
@@ -212,14 +212,8 @@ export default function App() {
       )}
 
       {currentPage === 'services' && (
-        <main className="relative overflow-hidden animate-fade-in pt-28 pb-10">
-          <WavyRibbon className="top-[350px] right-0" reverse opacity={0.24} />
-          <WavyRibbon className="top-[950px] left-0" opacity={0.24} />
-          <ServicesExtended />
-          <BookingSystem 
-            initialEventType={selectedEventType} 
-            onSelectEventType={handleSelectEventType} 
-          />
+        <main className="relative animate-fade-in pt-[72px] lg:pt-[80px]">
+          <ServicesPage />
         </main>
       )}
 

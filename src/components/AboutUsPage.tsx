@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Star } from 'lucide-react';
 import Logo from './Logo';
 import AboutLocation from './AboutLocation';
-import heroImg from '../assets/images/shrutham_exterior_1782196718598.jpg';
+import heroImg from '../assets/images/about-hero.jpg';
 
 /*
  * About Us — built to the Figma frame (1440 wide, 60px side margins, 1316 content).
@@ -51,7 +51,7 @@ export default function AboutUsPage({ onInquire }: AboutUsPageProps) {
 
       {/* ================= HERO (Figma: 661.5 tall, soft blurred cream band + brand mark) ================= */}
       <section className="relative h-[420px] md:h-[540px] lg:h-[661px] overflow-hidden" aria-label="Shrutham Convention">
-        <img src={heroImg} alt="Shrutham Convention exterior" className="absolute inset-0 w-full h-full object-cover object-center" />
+        <img src={heroImg} alt="The signature steel spiral sculpture at the Shrutham Convention entrance" className="absolute inset-0 w-full h-full object-cover object-[center_60%]" />
         {/* Vector 2: 1884×305, blur 35px, rotate -2.17°, starts 361px into the hero */}
         <div className="absolute left-[-23%] w-[131%] h-[220px] lg:h-[305px] bottom-[-110px] lg:bottom-[-5px] bg-[#FCFAF5] blur-[24px] lg:blur-[35px] -rotate-[2.17deg]" aria-hidden="true" />
         <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#FCFAF5] to-transparent" aria-hidden="true" />
