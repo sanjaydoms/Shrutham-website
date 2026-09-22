@@ -9,6 +9,8 @@ import OurStory from './components/OurStory';
 import AboutExtended from './components/AboutExtended';
 import AboutUsPage from './components/AboutUsPage';
 import ServicesPage from './components/services/ServicesPage';
+import EventsPage from './components/events/EventsPage';
+import SpacesPage from './components/spaces/SpacesPage';
 import EventsGrid from './components/EventsGrid';
 import FacilitiesGrid from './components/FacilitiesGrid';
 import BookingSystem from './components/BookingSystem';
@@ -218,28 +220,31 @@ export default function App() {
       )}
 
       {currentPage === 'facilities' && (
-        <main className="relative overflow-hidden animate-fade-in pt-28 pb-10">
-          <WavyRibbon className="top-[350px] left-0" opacity={0.24} />
-          <VenuesView 
-            initialSelectedVenueId={activeFacilityId}
-            onInquire={(venueName) => {
-              setSelectedEventType(venueName === 'Grand Convention Hall' ? 'Weddings & Receptions' : 'Conferences & Exhibitions');
-              // Navigate to contact form
-              window.location.hash = '#contact';
-              setTimeout(() => {
-                const el = document.getElementById('contact');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }, 100);
-            }} 
-          />
-        </main>
+        activeFacilityId ? (
+          <main className="relative overflow-hidden animate-fade-in pt-28 pb-10">
+            <WavyRibbon className="top-[350px] left-0" opacity={0.24} />
+            <VenuesView
+              initialSelectedVenueId={activeFacilityId}
+              onInquire={(venueName) => {
+                setSelectedEventType(venueName === 'Grand Convention Hall' ? 'Weddings & Receptions' : 'Conferences & Exhibitions');
+                window.location.hash = '#contact';
+                setTimeout(() => {
+                  const el = document.getElementById('contact');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              }}
+            />
+          </main>
+        ) : (
+          <main className="relative animate-fade-in pt-[72px] lg:pt-[80px]">
+            <SpacesPage />
+          </main>
+        )
       )}
 
       {currentPage === 'events' && (
-        <main className="relative overflow-hidden animate-fade-in pt-28 pb-10">
-          <WavyRibbon className="top-[350px] right-0" reverse opacity={0.24} />
-          <EventsGrid onSelectEventType={handleSelectEventType} variant="list" />
-          <CtaSection onSelectEventType={handleSelectEventType} />
+        <main className="relative animate-fade-in pt-[72px] lg:pt-[80px]">
+          <EventsPage />
         </main>
       )}
 
